@@ -11,8 +11,8 @@ apigee_yum_repositories:
     exclude: "$apigeeexclude",
     repo_filename: "apigee" }
 - { name: "Apigee Thirdparty Repo",
-    baseurl: "$apigeeprotocol$apigeecredentialswithat$apigeerepohost$apigeerepobasepath/thirdparty/$releasever",
     repo_id: "apigee-thirdparty",
+    baseurl: "$apigeeprotocol$apigeecredentialswithat$apigeerepohost$apigeerepobasepath/thirdparty/$releasever",
     gpgcheck: "0",
     gpgkey: "",
     priority: "$apigeepriority",
@@ -21,4 +21,8 @@ apigee_yum_repositories:
 - { name: "Artifactory",
     repo_id: "Artifactory",
     baseurl: "https://oneartifactory.verizon.com/artifactory/dl-fedoraproject-org-epel7-x86_64",
-    gpgcheck: "0" }
+    gpgcheck: "0" ,
+    gpgkey: "",
+    priority: "",
+    exclude: "",
+    repo_filename: "artifactory" }
