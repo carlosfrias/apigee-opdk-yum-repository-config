@@ -18,11 +18,11 @@ apigee_yum_repositories:
     priority: "$apigeepriority",
     exclude: "" ,
     repo_filename: "apigee" }
-- { name: "Artifactory",
-    repo_id: "Artifactory",
-    baseurl: "https://oneartifactory.verizon.com/artifactory/dl-fedoraproject-org-epel7-x86_64",
-    gpgcheck: "0" ,
-    gpgkey: "",
-    priority: "",
-    exclude: "",
-    repo_filename: "artifactory" }
+#- { name: "Artifactory",
+#    repo_id: "Artifactory",
+#    baseurl: "https://oneartifactory.verizon.com/artifactory/dl-fedoraproject-org-epel7-x86_64",
+#    gpgcheck: "0" ,
+#    gpgkey: "",
+#    priority: "",
+#    exclude: "",
+#    repo_filename: "artifactory" }
