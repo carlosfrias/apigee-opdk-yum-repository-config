@@ -1,0 +1,15 @@
+---
+- name: Configure Apigee Yum repositories
+  yum_repository:
+     enabled: true
+     state: present
+     name: "{{ item.repo_id }}"
+     description: "{{ item.name }}"
+     baseurl: "{{ item.baseurl }}"
+     gpgcheck: "{{ item.gpgcheck }}"
+     gpgkey: "{{ item.gpgkey }}"
+     priority: "{{ item.priority }}"
+     exclude: "{{ item.exclude }}"
+     proxy: "{{ https_proxy }}"
+     file: '{{ item.repo_filename }}'
+  with_items: "{{ apigee_yum_repositories }}"

@@ -8,12 +8,17 @@ apigee_yum_repositories:
     gpgcheck: "1",
     gpgkey: "file:///etc/pki/rpm-gpg/RPM-GPG-KEY-apigee",
     priority: "$apigeepriority",
-    exclude: "$apigeeexclude" }
+    exclude: "$apigeeexclude",
+    repo_filename: "apigee" }
 - { name: "Apigee Thirdparty Repo",
     baseurl: "$apigeeprotocol$apigeecredentialswithat$apigeerepohost$apigeerepobasepath/thirdparty/$releasever",
     repo_id: "apigee-thirdparty",
     gpgcheck: "0",
     gpgkey: "",
     priority: "$apigeepriority",
-    exclude: "" }
-
+    exclude: "" ,
+    repo_filename: "apigee" }
+- { name: "Artifactory",
+    repo_id: "Artifactory",
+    baseurl: "https://oneartifactory.verizon.com/artifactory/dl-fedoraproject-org-epel7-x86_64",
+    gpgcheck: "0" }
