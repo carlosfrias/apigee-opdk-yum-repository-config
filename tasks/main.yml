@@ -1,7 +1,7 @@
 ---
 # tasks file for apigee-opdk-yum-repository-proxy-config
-#- include: with_proxy.yml
-#  when: https_proxy is defined
+- include: with_proxy.yml
+  when: https_proxy is defined and http_proxy is defined
 
 - include: with_no_proxy.yml
-#  when: https_proxy is not defined
+  when: https_proxy is not defined and https_proxy is not defined
