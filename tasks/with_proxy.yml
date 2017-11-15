@@ -10,6 +10,10 @@
      gpgkey: "{{ item.gpgkey }}"
      priority: "{{ item.priority }}"
      exclude: "{{ item.exclude }}"
-     proxy: "{{ https_proxy }}"
      file: '{{ item.repo_filename }}'
-  with_items: "{{ apigee_yum_repositories }}"
+     sslverify: '{{ item.sslverify }}'
+  with_items: "{{ yum_repositories }}"
+  environment:
+    http_proxy: "{{ http_proxy }}"
+    https_proxy: "{{ https_proxy }}"
+    no_proxy: "{{ no_proxy }}"
