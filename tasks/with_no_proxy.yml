@@ -1,7 +1,7 @@
 ---
 - name: Configure Apigee Yum repositories
   yum_repository:
-     enabled: true
+     enabled: "{{ item.enabled | default(true} }}"
      state: present
      name: "{{ item.repo_id }}"
      description: "{{ item.name }}"
