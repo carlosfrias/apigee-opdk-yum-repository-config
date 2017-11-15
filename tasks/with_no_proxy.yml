@@ -11,4 +11,5 @@
      priority: "{{ item.priority }}"
      exclude: "{{ item.exclude }}"
      file: '{{ item.repo_filename }}'
-  with_items: "{{ apigee_yum_repositories }}"
+     sslverify: '{{ item.sslverify }}'
+  with_items: "{{ yum_repositories }}"
