@@ -1,7 +1,20 @@
 ---
 # tasks file for apigee-opdk-yum-repository-proxy-config
-- include: with_proxy.yml
-  when: yum_repositories is defined and https_proxy is defined and https_proxy | trim != '' and http_proxy is defined and http_proxy | trim != ''
-
-- include: with_no_proxy.yml
-  when: yum_repositories is defined and (https_proxy is not defined or https_proxy | trim == '') and (http_proxy is not defined or http_proxy | trim == '')
+- name: Configure Apigee Yum repositories
+  yum_repository:
+     enabled: "{{ item.enabled | default(true) }}"
+     state: "{{ item.state | default('present') }}"
+     name: "{{ item.repo_id }}"
+     description: "{{ item.name }}"
+     baseurl: "{{ item.baseurl }}"
+     gpgcheck: "{{ item.gpgcheck }}"
+     gpgkey: "{{ item.gpgkey }}"
+     priority: "{{ item.priority }}"
+     exclude: "{{ item.exclude }}"
+     file: '{{ item.repo_filename }}'
+     sslverify: '{{ item.sslverify }}'
+  with_items: "{{ yum_repositories }}"
+  environment:
+    http_proxy: "{{ http_proxy }}"
+    https_proxy: "{{ https_proxy }}"
+    no_proxy: "{{ no_proxy }}"
