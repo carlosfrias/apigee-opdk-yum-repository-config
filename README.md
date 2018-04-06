@@ -6,17 +6,40 @@ This role will enable add a proxy setting to the Yum apigee.repo file.
 Requirements
 ------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+None
 
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+This role uses the variable `yum_repositories`. This variable must be defined for each yum repository as follows:
+
+    yum_repositories:
+    - { name: "Apigee $apigeestage repo",
+        baseurl: "$apigeeprotocol$apigeecredentialswithat$apigeerepohost$apigeerepobasepath/apigee/$apigeestage/$apigeereleasever",
+        repo_id: "apigee-$apigeestage",
+        gpgcheck: "1",
+        gpgkey: "file:///etc/pki/rpm-gpg/RPM-GPG-KEY-apigee",
+        priority: "$apigeepriority",
+        exclude: "$apigeeexclude",
+        repo_filename: "apigee",
+        sslverify: false
+      }
+    - { name: "Apigee Thirdparty Repo",
+        repo_id: "apigee-thirdparty",
+        baseurl: "$apigeeprotocol$apigeecredentialswithat$apigeerepohost$apigeerepobasepath/thirdparty/$releasever",
+        gpgcheck: "0",
+        gpgkey: "",
+        priority: "$apigeepriority",
+        exclude: "" ,
+        repo_filename: "apigee",
+        sslverify: false
+      }
+
 
 Dependencies
 ------------
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+None
 
 Example Playbook
 ----------------
@@ -24,18 +47,43 @@ Example Playbook
 Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
 
     - hosts: servers
+      vars:
+      yum_repositories:
+      - { name: "Apigee $apigeestage repo",
+          baseurl: "$apigeeprotocol$apigeecredentialswithat$apigeerepohost$apigeerepobasepath/apigee/$apigeestage/$apigeereleasever",
+          repo_id: "apigee-$apigeestage",
+          gpgcheck: "1",
+          gpgkey: "file:///etc/pki/rpm-gpg/RPM-GPG-KEY-apigee",
+          priority: "$apigeepriority",
+          exclude: "$apigeeexclude",
+          repo_filename: "apigee",
+          sslverify: false
+        }
+      - { name: "Apigee Thirdparty Repo",
+          repo_id: "apigee-thirdparty",
+          baseurl: "$apigeeprotocol$apigeecredentialswithat$apigeerepohost$apigeerepobasepath/thirdparty/$releasever",
+          gpgcheck: "0",
+          gpgkey: "",
+          priority: "$apigeepriority",
+          exclude: "" ,
+          repo_filename: "apigee",
+          sslverify: false
+        }
+ 
       roles:
-         - { role: username.rolename, x: 42 }
+         - { role: apigee-opdk-yum-repository-proxy-config }
 
 License
 -------
 
-BSD
+Apache 2.0
 
 Author Information
 ------------------
 
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+Carlos Frias
+
+
 <!-- BEGIN Google Required Disclaimer -->
 
 # Not Google Product Clause

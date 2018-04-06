@@ -22,11 +22,4 @@
 #    repo_filename: "apigee",
 #    sslverify: false
 #  }
-#- { name: "Artifactory",
-#    repo_id: "Artifactory",
-#    baseurl: "https://oneartifactory.verizon.com/artifactory/dl-fedoraproject-org-epel7-x86_64",
-#    gpgcheck: "0" ,
-#    gpgkey: "",
-#    priority: "",
-#    exclude: "",
-#    repo_filename: "artifactory" }
+
