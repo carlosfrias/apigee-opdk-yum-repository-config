@@ -9,7 +9,7 @@
      baseurl: "{{ item.baseurl }}"
      gpgcheck: "{{ item.gpgcheck | default(0)}}"
      gpgkey: "{{ item.gpgkey }}"
-     priority: "{{ item.priority } default('') }}"
+     priority: "{{ item.priority | default('') }}"
      exclude: "{{ item.exclude | default('') }}"
      file: '{{ item.repo_filename }}'
      sslverify: '{{ item.sslverify | default(false) }}'
