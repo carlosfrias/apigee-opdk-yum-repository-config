@@ -7,12 +7,12 @@
      name: "{{ item.repo_id }}"
      description: "{{ item.name }}"
      baseurl: "{{ item.baseurl }}"
-     gpgcheck: "{{ item.gpgcheck }}"
+     gpgcheck: "{{ item.gpgcheck | default(0)}}"
      gpgkey: "{{ item.gpgkey }}"
-     priority: "{{ item.priority }}"
-     exclude: "{{ item.exclude }}"
+     priority: "{{ item.priority } default('') }}"
+     exclude: "{{ item.exclude | default('') }}"
      file: '{{ item.repo_filename }}'
-     sslverify: '{{ item.sslverify }}'
+     sslverify: '{{ item.sslverify | default(false) }}'
   with_items: "{{ yum_repositories }}"
   environment:
     http_proxy: "{{ http_proxy }}"
