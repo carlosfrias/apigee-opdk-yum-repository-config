@@ -8,6 +8,7 @@
      name: "{{ item.repo_id }}"
      repo_id: "{{ item.repo_id }}"
      description: "{{ item.name | default('') }}"
+     metalink: "{{ item.metalink | default('') }}"
      baseurl: "{{ item.baseurl | default('') }}"
      gpgcheck: "{{ item.gpgcheck | default(0) }}"
      gpgkey: "{{ item.gpgkey | default('') }}"
@@ -19,6 +20,5 @@
      proxy_password: "{{ item.proxy_password | default('') }}"
      proxy_username: "{{ item.proxy_username | default('') }}"
      failovermethod: "{{ item.failovermethod | default('') }}"
-     metalink: "{{ item.metalink | default('') }}"
   with_items: "{{ yum_repositories }}"
   when: yum_repositories is defined
