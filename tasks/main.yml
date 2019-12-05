@@ -6,7 +6,6 @@
      enabled: "{{ item.enabled | default(true) }}"
      state: "{{ item.state | default('present') }}"
      name: "{{ item.repo_id }}"
-     repo_id: "{{ item.repo_id }}"
      description: "{{ item.name | default('') }}"
      metalink: "{{ item.metalink | default('') }}"
      baseurl: "{{ item.baseurl | default('') }}"
