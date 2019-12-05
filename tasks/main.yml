@@ -15,7 +15,7 @@
      priority: "{{ item.priority | default(5) }}"
      exclude: "{{ item.exclude | default('') }}"
      file: '{{ item.repo_filename }}'
-     sslverify: '{{ item.sslverify | default('') }}'
+     sslverify: "{{ item.sslverify | default('') }}"
      proxy: "{{ item.proxy | default('') }}"
      proxy_password: "{{ item.proxy_password | default('') }}"
      proxy_username: "{{ item.proxy_username | default('') }}"
