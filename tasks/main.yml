@@ -18,6 +18,6 @@
      proxy: "{{ item.proxy | default('') }}"
      proxy_password: "{{ item.proxy_password | default('') }}"
      proxy_username: "{{ item.proxy_username | default('') }}"
-     failovermethod: "{{ item.failovermethod | default('') }}"
+     failovermethod: "{{ item.failovermethod | default('roundrobin') }}"
   with_items: "{{ yum_repositories }}"
   when: yum_repositories is defined
